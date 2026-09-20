@@ -88,7 +88,7 @@
     );
   }
 
-  return FBResponseWithValue(@{
+  return FBResponseWithObject(@{
     @"localIdentifier": placeholder.localIdentifier ?: @""
   });
 }
