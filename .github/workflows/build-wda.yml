@@ -33,6 +33,7 @@ jobs:
             -target WebDriverAgentLib \
             -configuration Debug \
             -sdk iphoneos \
+            -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY=""
@@ -40,7 +41,7 @@ jobs:
       - name: Locate build products
         run: |
           echo "=== BUILD PRODUCTS ==="
-          find . -type d -name "*.framework" -o -name "*.app" | head -100
+          find build -maxdepth 6 \( -name "*.framework" -o -name "*.app" \) -print
 
       - name: Package build output
         run: |
@@ -48,17 +49,13 @@ jobs:
 
           if [ -d "build/Build/Products/Debug-iphoneos" ]; then
             cp -R "build/Build/Products/Debug-iphoneos" "artifacts/"
-          fi
-
-          if [ -d "$HOME/Library/Developer/Xcode/DerivedData" ]; then
-            find "$HOME/Library/Developer/Xcode/DerivedData" \
-              -type d \
-              -path "*/Build/Products/Debug-iphoneos" \
-              -exec cp -R {} artifacts/ \; 2>/dev/null || true
+          else
+            echo "ERROR: Build output directory not found"
+            exit 1
           fi
 
           echo "=== ARTIFACTS ==="
-          find artifacts -maxdepth 5 -print
+          find artifacts -maxdepth 6 -print
 
       - name: Upload build
         uses: actions/upload-artifact@v4
