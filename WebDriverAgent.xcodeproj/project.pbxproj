@@ -1423,7 +1423,7 @@
 
 /* Begin PBXFileReference section */
 		5734245B7C5244B0A864886E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
-ECD949BF397F42BFB24333DD /* FBPhotoCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objc; path = FBPhotoCommands.m; sourceTree = "<group>"; };		003AAAB9CB5FB38E45E05F6F /* XCUIDeviceEventAndStateInterface-Protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCUIDeviceEventAndStateInterface-Protocol.h"; sourceTree = "<group>"; };
+ECD949BF397F42BFB24333DD /* FBPhotoCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objc; path = "WebDriverAgentLib/Commands/FBPhotoCommands.m"; sourceTree = "<group>"; };		003AAAB9CB5FB38E45E05F6F /* XCUIDeviceEventAndStateInterface-Protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCUIDeviceEventAndStateInterface-Protocol.h"; sourceTree = "<group>"; };
 		00834B3220005AD5A5ABEF7C /* XCUIApplicationManaging-Protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCUIApplicationManaging-Protocol.h"; sourceTree = "<group>"; };
 		00B1F89716AFE04C8509B916 /* FBHTTPServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FBHTTPServer.h; sourceTree = "<group>"; };
 		01AF8E73DD47455B4854E470 /* XCTRunnerAutomationSession-Protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCTRunnerAutomationSession-Protocol.h"; sourceTree = "<group>"; };
