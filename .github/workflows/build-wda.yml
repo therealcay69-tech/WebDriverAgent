@@ -39,8 +39,25 @@ jobs:
 
       - name: Locate build products
         run: |
-          echo "=== BUILD PRODUCTS ==="
-          find "$HOME/Library/Developer/Xcode/DerivedData" -type d \( -name "*.framework" -o -name "*.app" \) -print | head -100
+          echo "=== BUILD SETTINGS ==="
+          xcodebuild \
+            -project WebDriverAgent.xcodeproj \
+            -target WebDriverAgentLib \
+            -configuration Debug \
+            -sdk iphoneos \
+            -showBuildSettings | grep -E "^( *BUILD_DIR| *TARGET_BUILD_DIR| *CONFIGURATION_BUILD_DIR| *BUILT_PRODUCTS_DIR| *FULL_PRODUCT_NAME| *WRAPPER_NAME) ="
+
+          echo "=== ALL FRAMEWORKS ==="
+          find "$HOME/Library/Developer/Xcode" \
+            -type d \
+            -name "*.framework" \
+            -print 2>/dev/null | head -200
+
+          echo "=== WEBDRIVERAGENTLIB ==="
+          find "$HOME/Library/Developer/Xcode" \
+            -type d \
+            -name "WebDriverAgentLib.framework" \
+            -print 2>/dev/null
 
       - name: Package build output
         run: |
