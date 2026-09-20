@@ -11,11 +11,28 @@
 
 + (NSArray *)routes
 {
+  NSLog(@"[FBPhotoCommands] +routes CALLED");
+
   return @[
+    [[FBRoute GET:@"/wda/photoDebug"].withoutSession
+      respondWithTarget:self
+      action:@selector(handlePhotoDebug:)],
+
     [[FBRoute POST:@"/wda/addFileToPhotos"].withoutSession
       respondWithTarget:self
       action:@selector(handleAddFileToPhotos:)]
   ];
+}
+
++ (id<FBResponsePayload>)handlePhotoDebug:(FBRouteRequest *)request
+{
+  NSLog(@"[FBPhotoCommands] handlePhotoDebug CALLED");
+
+  return FBResponseWithObject(@{
+    @"registered": @YES,
+    @"class": NSStringFromClass(self),
+    @"message": @"FBPhotoCommands route is registered"
+  });
 }
 
 + (id<FBResponsePayload>)handleAddFileToPhotos:(FBRouteRequest *)request

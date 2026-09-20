@@ -58,3 +58,4 @@ Gemfile.lock
 # Local experiment backups
 WebDriverAgent.xcodeproj/project.pbxproj.before-photo*
 WebDriverAgentRunner/Info.plist.before-photos
+WebDriverAgentLib/Commands/FBPhotoCommands.m.before-runtime-debug
