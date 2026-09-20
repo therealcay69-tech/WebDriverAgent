@@ -1,6 +1,9 @@
 name: Build WDA Photos Experiment
 
 on:
+  push:
+    branches:
+      - photos-experiment
   workflow_dispatch:
 
 jobs:
