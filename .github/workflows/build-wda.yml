@@ -63,16 +63,12 @@ jobs:
         run: |
           mkdir -p artifacts
 
-          PRODUCT_DIR=$(find "$HOME/Library/Developer/Xcode/DerivedData" \
-            -type d \
-            -path "*/Build/Products/Debug-iphoneos" \
-            -print \
-            | head -1)
+          PRODUCT_DIR="build/Debug-iphoneos"
 
           echo "=== PRODUCT_DIR ==="
           echo "$PRODUCT_DIR"
 
-          if [ -n "$PRODUCT_DIR" ] && [ -d "$PRODUCT_DIR" ]; then
+          if [ -d "$PRODUCT_DIR" ]; then
             cp -R "$PRODUCT_DIR" "artifacts/"
           else
             echo "ERROR: Could not locate Xcode build products"
