@@ -33,7 +33,6 @@ jobs:
             -target WebDriverAgentLib \
             -configuration Debug \
             -sdk iphoneos \
-            -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY=""
@@ -41,16 +40,25 @@ jobs:
       - name: Locate build products
         run: |
           echo "=== BUILD PRODUCTS ==="
-          find build -maxdepth 6 \( -name "*.framework" -o -name "*.app" \) -print
+          find "$HOME/Library/Developer/Xcode/DerivedData" -type d \( -name "*.framework" -o -name "*.app" \) -print | head -100
 
       - name: Package build output
         run: |
           mkdir -p artifacts
 
-          if [ -d "build/Build/Products/Debug-iphoneos" ]; then
-            cp -R "build/Build/Products/Debug-iphoneos" "artifacts/"
+          PRODUCT_DIR=$(find "$HOME/Library/Developer/Xcode/DerivedData" \
+            -type d \
+            -path "*/Build/Products/Debug-iphoneos" \
+            -print \
+            | head -1)
+
+          echo "=== PRODUCT_DIR ==="
+          echo "$PRODUCT_DIR"
+
+          if [ -n "$PRODUCT_DIR" ] && [ -d "$PRODUCT_DIR" ]; then
+            cp -R "$PRODUCT_DIR" "artifacts/"
           else
-            echo "ERROR: Build output directory not found"
+            echo "ERROR: Could not locate Xcode build products"
             exit 1
           fi
 
