@@ -26,58 +26,46 @@ jobs:
           echo "=== XCODE PROJECT ==="
           ls -la WebDriverAgent.xcodeproj
 
-      - name: Build WebDriverAgentLib
+      - name: Build WebDriverAgentRunner
         run: |
           xcodebuild \
             -project WebDriverAgent.xcodeproj \
-            -target WebDriverAgentLib \
+            -scheme WebDriverAgentRunner \
             -configuration Debug \
             -sdk iphoneos \
+            -derivedDataPath build \
+            -destination "generic/platform=iOS" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY=""
+            CODE_SIGN_IDENTITY="" \
+            build-for-testing
 
-      - name: Locate build products
+      - name: Locate Runner
         run: |
-          echo "=== BUILD SETTINGS ==="
-          xcodebuild \
-            -project WebDriverAgent.xcodeproj \
-            -target WebDriverAgentLib \
-            -configuration Debug \
-            -sdk iphoneos \
-            -showBuildSettings | grep -E "^( *BUILD_DIR| *TARGET_BUILD_DIR| *CONFIGURATION_BUILD_DIR| *BUILT_PRODUCTS_DIR| *FULL_PRODUCT_NAME| *WRAPPER_NAME) ="
+          echo "=== RUNNER PRODUCTS ==="
+          find build -type d \( -name "*.app" -o -name "*.xctest" \) -print
 
-          echo "=== ALL FRAMEWORKS ==="
-          find "$HOME/Library/Developer/Xcode" \
-            -type d \
-            -name "*.framework" \
-            -print 2>/dev/null | head -200
+          echo "=== RUNNER APP ==="
+          find build -type d -name "WebDriverAgentRunner-Runner.app" -print
 
-          echo "=== WEBDRIVERAGENTLIB ==="
-          find "$HOME/Library/Developer/Xcode" \
-            -type d \
-            -name "WebDriverAgentLib.framework" \
-            -print 2>/dev/null
-
-      - name: Package build output
+      - name: Package Runner
         run: |
           mkdir -p artifacts
 
-          PRODUCT_DIR="build/Debug-iphoneos"
+          RUNNER_APP=$(find build -type d -name "WebDriverAgentRunner-Runner.app" -print | head -1)
 
-          echo "=== PRODUCT_DIR ==="
-          echo "$PRODUCT_DIR"
+          echo "=== RUNNER_APP ==="
+          echo "$RUNNER_APP"
 
-          if [ -d "$PRODUCT_DIR" ]; then
-            cp -R "$PRODUCT_DIR" "artifacts/"
+          if [ -n "$RUNNER_APP" ] && [ -d "$RUNNER_APP" ]; then
+            cp -R "$RUNNER_APP" "artifacts/"
           else
-            echo "ERROR: Could not locate Xcode build products"
+            echo "ERROR: WebDriverAgentRunner-Runner.app was not found"
             exit 1
           fi
 
           echo "=== ARTIFACTS ==="
           find artifacts -maxdepth 6 -print
-
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
