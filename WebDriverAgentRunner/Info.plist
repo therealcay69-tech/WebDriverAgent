@@ -26,5 +26,9 @@
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+        <key>NSPhotoLibraryUsageDescription</key>
+        <string>Access is necessary for automated testing.</string>
+        <key>NSPhotoLibraryAddUsageDescription</key>
+        <string>Access is necessary to add videos to Photos for automated testing.</string>
 </dict>
 </plist>

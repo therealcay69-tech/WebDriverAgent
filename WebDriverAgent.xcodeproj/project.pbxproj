@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		005B327C702EF47820887884 /* FBErrorBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = EE3A18601CDE618F00DE4205 /* FBErrorBuilder.h */; };
+		B59561416B4143719AE155F0 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5734245B7C5244B0A864886E /* Photos.framework */; };
+68FF4B2BA8EF4AA5B6646CBC /* FBPhotoCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD949BF397F42BFB24333DD /* FBPhotoCommands.m */; };		005B327C702EF47820887884 /* FBErrorBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = EE3A18601CDE618F00DE4205 /* FBErrorBuilder.h */; };
 		00ABDDC324B060006EA182F7 /* FBScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 715AFAC01FFA29180053896D /* FBScreen.m */; };
 		0161F45997A981E47729DB25 /* RouteResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 01E7CFEBAD717FCF4BCDD383 /* RouteResponse.h */; };
 		01A6F9758F11F6EF5B495D97 /* XCTPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CA02992F03AE1E134F2CAF5 /* XCTPromise.h */; };
@@ -1421,7 +1422,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		003AAAB9CB5FB38E45E05F6F /* XCUIDeviceEventAndStateInterface-Protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCUIDeviceEventAndStateInterface-Protocol.h"; sourceTree = "<group>"; };
+		5734245B7C5244B0A864886E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+ECD949BF397F42BFB24333DD /* FBPhotoCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objc; path = FBPhotoCommands.m; sourceTree = "<group>"; };		003AAAB9CB5FB38E45E05F6F /* XCUIDeviceEventAndStateInterface-Protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCUIDeviceEventAndStateInterface-Protocol.h"; sourceTree = "<group>"; };
 		00834B3220005AD5A5ABEF7C /* XCUIApplicationManaging-Protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCUIApplicationManaging-Protocol.h"; sourceTree = "<group>"; };
 		00B1F89716AFE04C8509B916 /* FBHTTPServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FBHTTPServer.h; sourceTree = "<group>"; };
 		01AF8E73DD47455B4854E470 /* XCTRunnerAutomationSession-Protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCTRunnerAutomationSession-Protocol.h"; sourceTree = "<group>"; };
@@ -2053,6 +2055,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			B59561416B4143719AE155F0 /* Photos.framework in Frameworks */,
 				7155B40E224D5A850042A993 /* libAccessibility.tbd in Frameworks */,
 				7155B424224D5BA10042A993 /* XCTest.framework in Frameworks */,
 				716C9347224D540C004B8542 /* libxml2.tbd in Frameworks */,
@@ -4657,7 +4660,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE158AC71CBD456F00A3E3F0 /* FBScreenshotCommands.m in Sources */,
+68FF4B2BA8EF4AA5B6646CBC /* FBPhotoCommands.m in Sources */,				EE158AC71CBD456F00A3E3F0 /* FBScreenshotCommands.m in Sources */,
 				7136A47A1E8918E60024FC3D /* XCUIElement+FBPickerWheel.m in Sources */,
 				6385F4A7220A40760095BBDB /* XCUIApplicationProcessDelay.m in Sources */,
 				71A5C67529A4F39600421C37 /* XCTIssue+FBPatcher.m in Sources */,

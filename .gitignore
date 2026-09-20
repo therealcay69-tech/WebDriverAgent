@@ -54,3 +54,7 @@ WebDriverAgentRunner-Runner.app/
 
 # Ruby
 Gemfile.lock
+
+# Local experiment backups
+WebDriverAgent.xcodeproj/project.pbxproj.before-photo*
+WebDriverAgentRunner/Info.plist.before-photos
